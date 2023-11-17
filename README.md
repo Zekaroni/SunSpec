@@ -17,13 +17,13 @@ Our project involves gathering spectrometric data from the Sun using a combinati
 Microcontrollers, motors, camera, and spectrometer.
 2-axis gimbal system controlled by a Raspberry Pi for solar orientation.
 Seamless coordination between the image-capturing system and the spectrometer.
-Space-Based Approach:
+
+#### Space-Based Approach:
 Launching into space provides high-resolution and precision data, an unobstructed view, and eliminates light pollution for accurate analysis of the Sun's spectral features.
 
 #### Subsystems:
 
 Spectrometer and Raspberry Pi:
-
 Housed inside an enclosure.
 Communicates over serial.
 Gathers scientific data.
