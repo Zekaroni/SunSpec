@@ -1,5 +1,5 @@
 # SunSpec
-This is the offical repository for the BRCTC Space Team's SunSpec project.
+This is the official repository for the BRCTC Space Team's SunSpec project.
 
 
 ## Table of Contents
