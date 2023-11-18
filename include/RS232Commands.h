@@ -47,7 +47,7 @@ namespace BaudRates
 namespace ResponseCodes
 {
     const char ACK = 0x06;
-    const char ENTER = 0x0D; // Also reffered to as CR (carriage return) or <CR> in DataSheet
+    const char CR = 0x0D;
     const char NAK = 0x15;
 };
 
@@ -78,7 +78,6 @@ namespace USBCommands
 
 class RS232Commands
 {
-    // TODO: Figure out how to disearn ACK from NAK ASCII
     public:
         void AddScans(uint16_t scans);
         void SetPixelBoxcarWidth(uint16_t width);
@@ -93,9 +92,9 @@ class RS232Commands
         void GetSpectralData();
         void SetTriggerMode(uint16_t value);
         void SetRegisterValue(uint16_t address, uint16_t value); // THE MOTHERLOAD
-        void SetASCIIMode(); // Please for the love of god don't use this
+        void SetASCIIMode();                                     // Please for the love of god don't use this
         void SetBINMode();
         void SetChecksumMode(bool state);
         void GetVersionNumber();
-        void GetVariableInformation(char command); // Uses RS232Commands namespace
+        void GetVariableInformation(char command);               // Uses RS232Commands namespace
 };
