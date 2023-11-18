@@ -1,4 +1,3 @@
-#pragma once
 #include <iostream>
 #include "../include/RS232Commands.h"
 #include "../include/logging.h"
