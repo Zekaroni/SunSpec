@@ -23,12 +23,12 @@ Launching into space provides high-resolution and precision data, an unobstructe
 
 #### Subsystems:
 
-Spectrometer and Raspberry Pi:
+##### Spectrometer and Raspberry Pi:
 Housed inside an enclosure.
 Communicates over serial.
 Gathers scientific data.
 
-#### Gimbal, Camera, and Attenuator:
+##### Gimbal, Camera, and Attenuator:
 
 Outside enclosure.
 Diagnostics data collected by the camera.
