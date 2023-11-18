@@ -48,3 +48,6 @@
 1700197906671 | GetVariableInformation | Invalid char passed : 99
 1700198119696 | GetVariableInformation | Invalid char passed : 99
 1700198232829 | GetVariableInformation | Invalid char passed : c
+1700330034698 | ./src/tx.cpp | SetPixelBoxcarWidth | 16
+1700330034699 | ./src/tx.cpp | SetBaudRate | 9
+1700330034701 | ./src/tx.cpp | GetVariableInformation | Invalid char passed : c

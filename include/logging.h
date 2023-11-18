@@ -5,7 +5,8 @@
 #include <iomanip>
 #include <sstream>
 
-std::ofstream ERROR_LOG("../log/ERROR.log", std::ios::app);
+
+std::ofstream ERROR_LOG("./log/ERROR.log", std::ios::app);
 std::string getTimestamp() {
     auto now = std::chrono::system_clock::now();
     auto duration = now.time_since_epoch();
@@ -13,5 +14,6 @@ std::string getTimestamp() {
     std::stringstream ss;
     ss << milliseconds;
     return ss.str();
-}
+};
+
 #define LogError(values){ERROR_LOG << getTimestamp() << " | " << __FILE__ << " | " << __func__ << " | " << values << std::endl;}
