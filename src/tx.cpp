@@ -1,23 +1,7 @@
 #pragma once
 #include <iostream>
-#include <fstream>
-#include <chrono>
-#include <ctime>
-#include <iomanip>
-#include <sstream>
-#include "RS232Commands.h"
-
-const std::string FILENAME = "ERROR_LOG.brctc";
-std::ofstream LOG(FILENAME, std::ios::app);
-std::string getTimestamp() {
-    auto now = std::chrono::system_clock::now();
-    auto duration = now.time_since_epoch();
-    auto milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(duration).count();
-    std::stringstream ss;
-    ss << milliseconds;
-    return ss.str();
-}
-#define LogError(values){LOG << getTimestamp() << " | " << __func__ << " | " << values << std::endl;}
+#include "../include/RS232Commands.h"
+#include "../include/logging.h"
 
 void SendData16(char command, uint16_t data)
 {
