@@ -47,7 +47,7 @@ namespace BaudRates
 namespace ResponseCodes
 {
     const char ACK = 0x06;
-    const char ENTER = 0x0D;
+    const char ENTER = 0x0D; // Also reffered to as CR (carriage return) or <CR> in DataSheet
     const char NAK = 0x15;
 };
 
