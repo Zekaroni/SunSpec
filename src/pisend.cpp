@@ -20,12 +20,13 @@ int main() {
         std::cout << "Opened serial." << std::endl;
     };
     
-    const char* sendData = "Hello, RS232!";
-    serialPrintf(serialPort, "%s\n", sendData);
-    while (serialDataAvail(serialPort) > 0)
+    std::string var;
+    while (1)
     {
-        char receivedChar = serialGetchar(serialPort);
-        std::cout << receivedChar;
+        var = "";
+        cin >> var;
+        const char* sendData = var;
+        serialPrintf(serialPort, "%s\n", sendData);
     };
 
     serialClose(serialPort);
