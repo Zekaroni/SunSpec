@@ -1,3 +1,4 @@
+#include "../lib/wiringPi/wiringPi.h"
 #include "../lib/wiringPi/wiringSerial.h"
 #include <iostream>
 
