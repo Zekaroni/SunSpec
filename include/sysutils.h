@@ -4,6 +4,7 @@
 #include <chrono>
 #include <wiringPi.h>
 #include <wiringSerial.h>
+#include "RS232Commands.h"
 #include "logging.h"
 
 namespace UTILS
@@ -19,6 +20,7 @@ namespace UTILS
         RX_RESPONSE_IN.get(response);
         if (response)
         {
+            LogCall("Success");
             return response;
         } else
         {
@@ -28,6 +30,7 @@ namespace UTILS
 
     void RX_WRITE(char value)
     {
+        LogCall("Success");
         RX_RESPONSE_OUT << value;
     };
 
@@ -37,6 +40,7 @@ namespace UTILS
         TX_RESPONSE_IN.get(response);
         if (response)
         {
+            LogCall("Success");
             return response;
         } else
         {
@@ -46,21 +50,25 @@ namespace UTILS
 
     void TX_WRITE(char value)
     {
+        LogCall("Success");
         TX_RESPONSE_OUT << value;
     };
 
     void microSleep(uint16_t microseconds)
     {
+        LogCall(std::to_string(microseconds));
         std::this_thread::sleep_for(std::chrono::microseconds(microseconds));
     };
 
     void miliSleep(uint16_t milliseconds)
     {
+        LogCall(std::to_string(milliseconds));
         std::this_thread::sleep_for(std::chrono::milliseconds(milliseconds));
     };
 
     void sleep(uint16_t seconds)
     {
+        LogCall(std::to_string(seconds));
         std::this_thread::sleep_for(std::chrono::seconds(seconds));
     };
 
@@ -70,9 +78,16 @@ namespace UTILS
             int serialPort = serialOpen(device, 9600);
             const char* device = "/dev/serial0";
             
-            void SendData(uint16_t data)
+            void QueueData(uint16_t data)
             {
+                LogCall(std::to_string(data));
                 serialPrintf(serialPort, "%u", data);
+            };
+
+            void SendData()
+            {
+                // NOTE: The data must be queued first before sending a CR
+                serialPrintf(serialPort, "%s", ResponseCodes::CR);
             };
 
             void Close()
