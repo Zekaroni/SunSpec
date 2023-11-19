@@ -25,8 +25,7 @@ int main() {
     {
         var = "";
         cin >> var;
-        const char* sendData = var;
-        serialPrintf(serialPort, "%s\n", sendData);
+        serialPrintf(serialPort, "%s\n", var);
     };
 
     serialClose(serialPort);
