@@ -1,1 +1,1 @@
-g++ -o tx ./src/pisend.cpp
+g++ -o tx ./src/pisend.cpp -lwiringPi
