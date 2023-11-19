@@ -8,7 +8,7 @@ int main() {
         return 1;
     }
 
-    const char* device = "/dev/ttyS0";
+    const char* device = "/dev/serial0";
     
     int serialPort = serialOpen(device, 9600);
     if (serialPort == -1) {
