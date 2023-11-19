@@ -1,4 +1,4 @@
-#include <wiringSerial.h>
+#include "../lib/wiringPi/wiringSerial.h"
 #include <iostream>
 
 int main() {
