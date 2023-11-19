@@ -1,5 +1,6 @@
 #include <wiringPi.h>
-#include <serial.h>
+#include <wiringSerial.h>
+
 #include <iostream>
 
 int main() {
@@ -11,10 +12,14 @@ int main() {
     const char* device = "/dev/ttyS0";
 
     int serialPort = serialOpen(device, 9600);
-    if (serialPort == -1) {
+    if (serialPort == -1)
+    {
         std::cerr << "Failed to open serial port." << std::endl;
         return 1;
-    }
+    } else
+    {
+        std::cout << "Opened serial." << std::endl;
+    };
     
     const char* sendData = "Hello, RS232!";
     serialPrintf(serialPort, "%s\n", sendData);
