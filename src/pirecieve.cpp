@@ -14,7 +14,10 @@ int main() {
     if (serialPort == -1) {
         std::cerr << "Failed to open serial port." << std::endl;
         return 1;
-    }
+    } else
+    {
+        std::cout << "It worked" << std::endl;
+    };
 
     while (true) {
         while (serialDataAvail(serialPort) > 0) {
