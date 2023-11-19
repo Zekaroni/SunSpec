@@ -1,5 +1,5 @@
 #include <wiringPi.h>
-#include <wiringSerial.h>
+#include <serial.h>
 #include <iostream>
 
 int main() {
@@ -7,7 +7,7 @@ int main() {
         std::cerr << "Failed to initialize WiringPi." << std::endl;
         return 1;
     }
-    
+
     const char* device = "/dev/ttyS0";
 
     int serialPort = serialOpen(device, 9600);
