@@ -20,13 +20,12 @@ int main() {
         std::cout << "Opened serial." << std::endl;
     };
     
-    std::string var;
-    while (1)
-    {
-        var = "";
-        std::cin >> var;
-        serialPrintf(serialPort, "%s\n", var);
-    };
+    std::string input;
+    while (1) {
+        std::cout << "Enter a string: ";
+        std::getline(std::cin, input);
+        serialPrintf(serialPort, "%s\n", input.c_str());
+    }
 
     serialClose(serialPort);
     return 0;
