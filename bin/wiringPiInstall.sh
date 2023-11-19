@@ -1,4 +1,2 @@
-cd ./lib
-git clone https://github.com/WiringPi/WiringPi
-cd WiringPi
+cd ./lib/WiringPi
 ./build
