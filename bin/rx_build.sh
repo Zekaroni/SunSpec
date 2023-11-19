@@ -1,0 +1,1 @@
+g++ -o rx ./src/pirecieve.cpp -lwiringPi
