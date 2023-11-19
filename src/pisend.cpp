@@ -1,3 +1,4 @@
+#include <wiringSerial.h"
 #include <iostream>
 
 int main() {
