@@ -24,7 +24,7 @@ int main() {
     while (1)
     {
         var = "";
-        cin >> var;
+        std::cin >> var;
         serialPrintf(serialPort, "%s\n", var);
     };
 
