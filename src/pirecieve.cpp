@@ -20,7 +20,6 @@ int main() {
         while (serialDataAvail(serialPort) > 0) {
             char receivedChar = serialGetchar(serialPort);
             std::cout << receivedChar;
-            std::cout << "SHOULD BE SOMETHING" << std::endl;
         }
         delay(100);
     }
