@@ -54,8 +54,8 @@ void RS232Commands::AddScans(uint16_t scans)
 {
     if (scans < 5001 && scans > 0)
     {
-        SendData16(RS232::ADD_SCANS, scans);
         LogCall(std::to_string(scans));
+        SendData16(RS232::ADD_SCANS, scans);
     } else
     {
         LogError(std::to_string(scans));
@@ -66,8 +66,8 @@ void RS232Commands::SetPixelBoxcarWidth(uint16_t width)
 {
     if (width < 16 && width >= 0)
     {
-        SendData16(RS232::SET_PIXEL_BOXCAR, width);
         LogCall(std::to_string(width));
+        SendData16(RS232::SET_PIXEL_BOXCAR, width);
     } else
     {
         LogError(std::to_string(width))
@@ -90,8 +90,8 @@ void RS232Commands::IntegrationTime16Bit(int16_t miliseconds)
 {
     if (miliseconds < 65001 && miliseconds > 0)
     {
-        SendData16(RS232::SET_INTEGRATION_TIME_16, miliseconds);
         LogCall(std::to_string(miliseconds));
+        SendData16(RS232::SET_INTEGRATION_TIME_16, miliseconds);
     } else
     {
         LogError(std::to_string(miliseconds));
@@ -102,8 +102,8 @@ void RS232Commands::IntegrationTime32Bit(int32_t microseconds)
 {
     if (microseconds > 999 && microseconds < 65000001)
     {
-        SendData32(RS232::SET_INTEGRATION_TIME_32, microseconds);
         LogCall(std::to_string(microseconds));
+        SendData32(RS232::SET_INTEGRATION_TIME_32, microseconds);
     } else
     {
         LogError(std::to_string(microseconds));
@@ -112,16 +112,16 @@ void RS232Commands::IntegrationTime32Bit(int32_t microseconds)
 
 void RS232Commands::SetLampState(bool state)
 {
-    SendData16(RS232::SET_LAMP_LINE, static_cast<uint16_t>(state));
     LogCall(std::to_string(state))
+    SendData16(RS232::SET_LAMP_LINE, static_cast<uint16_t>(state));
 };
 
 void RS232Commands::SetBaudRate(uint16_t value)
 {
     if (value >= 0 && value < 7)
     {
-        SendData16(RS232::SET_BAUD_RATE, value);
         LogCall(std::to_string(value));
+        SendData16(RS232::SET_BAUD_RATE, value);
     } else
     {
         LogError(std::to_string(value));
@@ -130,14 +130,14 @@ void RS232Commands::SetBaudRate(uint16_t value)
 
 void RS232Commands::ClearMemory()
 {
-    SendData16(RS232::CLEAR_MEMORY, static_cast<uint16_t>(1));
     LogCall("1");
+    SendData16(RS232::CLEAR_MEMORY, static_cast<uint16_t>(1));
 };
 
 void RS232Commands::SetDataStorageMode(bool value)
 {
-    SendData16(RS232::SET_DATA_STORAGE_MODE, static_cast<uint16_t>(value));
     LogCall(std::to_string(value));
+    SendData16(RS232::SET_DATA_STORAGE_MODE, static_cast<uint16_t>(value));
 };
 
 void RS232Commands::SetPixelMode(uint8_t value, uint16_t param1, uint16_t param2, uint16_t param3)
@@ -147,16 +147,16 @@ void RS232Commands::SetPixelMode(uint8_t value, uint16_t param1, uint16_t param2
         switch (value)
         {
             case 0:
-                SendData16(RS232::SET_PIXEL_MODE, value);
                 LogCall(std::to_string(value));
+                SendData16(RS232::SET_PIXEL_MODE, value);
                 break;
                 
             case 1:
                 if (param1 > 0 && param1 < 1024)
                 {
+                    LogCall(std::to_string(value) + ", " + std::to_string(param1));
                     SendData16(RS232::SET_PIXEL_MODE, value);
                     SendDataStandalone16(static_cast<uint16_t>(param1));
-                    LogCall(std::to_string(value) + ", " + std::to_string(param1));
                 } else
                 {
                     LogError("Parameter 1 not valid : " + std::to_string(static_cast<short>(param1)));
@@ -190,16 +190,16 @@ void RS232Commands::SetPixelMode(uint8_t value, uint16_t param1, uint16_t param2
 
 void RS232Commands::GetSpectralData()
 {
-    SendDataStandalone16(RS232::GET_SPECTRAL_DATA);
     LogCall("1");
+    SendDataStandalone16(RS232::GET_SPECTRAL_DATA);
 };
 
 void RS232Commands::SetTriggerMode(uint16_t value)
 {
     if (value >= 0 && value < 4)
     {
-        SendData16(RS232::SET_TRIGGER_MODE, value);
         LogCall(std::to_string(value));
+        SendData16(RS232::SET_TRIGGER_MODE, value);
     } else
     {
         LogError("Invalid value : " + std::to_string(value));
@@ -209,33 +209,33 @@ void RS232Commands::SetTriggerMode(uint16_t value)
 void RS232Commands::SetRegisterValue(uint16_t address, uint16_t value)
 {
     // NOTE: EXCERSIZE CAUTION USING THIS COMMAND
-    SendRegisterUpdate(address, value);
     LogCall(std::to_string(address) + ", " + std::to_string(value));
+    SendRegisterUpdate(address, value);
 };
 
 void RS232Commands::SetASCIIMode()
 {
     // NOTE: PLEASE DO NOT SWITCH TO THIS MODE UNLESS YOU HAVE PROPERLY HANDLED IT
-    SendDataModeUpdate(RS232::SET_ASCII_MODE, 'A');
     LogCall("A");
+    SendDataModeUpdate(RS232::SET_ASCII_MODE, 'A');
 };
 
 void RS232Commands::SetBINMode()
 {
-    SendDataModeUpdate(RS232::SET_BIN_MODE, 'B');
     LogCall("B");
+    SendDataModeUpdate(RS232::SET_BIN_MODE, 'B');
 };
 
 void RS232Commands::SetChecksumMode(bool state)
 {
-    SendData16(RS232::SET_CHECKSUM_MODE, static_cast<uint16_t>(state));
     LogCall(std::to_string(state));
+    SendData16(RS232::SET_CHECKSUM_MODE, static_cast<uint16_t>(state));
 };
 
 void RS232Commands::GetVersionNumber()
 {
-    SendDataStandalone16(RS232::GET_VERSION_NUMBER);
     LogCall("1");
+    SendDataStandalone16(RS232::GET_VERSION_NUMBER);
 };
 
 void RS232Commands::GetVariableInformation(char command)
@@ -247,9 +247,9 @@ void RS232Commands::GetVariableInformation(char command)
     {
         if (validCommands[i] == command)
         {
+            LogCall(std::to_string(command));
             SendVariableRequest(command);
             validData = true;
-            LogCall(std::to_string(command));
             break;
         };
     };
