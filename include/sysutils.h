@@ -76,8 +76,8 @@ namespace UTILS
 class SerialCommunication
 {
     public:
-        int serialPort = serialOpen(device, 9600);
         const char* device = "/dev/serial0";
+        int serialPort = serialOpen(device, 9600);
 
         void QueueCommand(char command)
         {
