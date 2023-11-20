@@ -82,13 +82,14 @@ class SerialCommunication
         void QueueCommand(char command)
         {
             LogCall(std::to_string(command));
-            serialPrintf(serialPort, "%c\n", command);
+            serialPrintf(serialPort, "%c", command);
         };
 
         void QueueChar(char value)
         {
             LogCall(std::to_string(value));
             serialPrintf(serialPort, "%c", value);
+            SendData();
         };
         
         void QueueData16(uint16_t data)
@@ -111,16 +112,22 @@ class SerialCommunication
 
         void Close()
         {
-            serialClose(serialPort);
+            if (serialPort != -1)
+            {
+                serialClose(serialPort);
+                serialPort = -1;
+            };
         };        
 
     SerialCommunication()
     {
         if (wiringPiSetup() == -1) {
             LogError("Failed to initialize WiringPi.")
+            throw std::runtime_error("WiringPi initialization failed.");
         };
         if (serialPort == -1) {
             LogError("Failed to open serial port.") 
+            throw std::runtime_error("Serial port opening failed.");
         };
     };
 };
