@@ -82,7 +82,7 @@ class SerialCommunication
         void QueueCommand(char command)
         {
             LogCall(std::to_string(command));
-            serialPrintf(serialPort, "%c", command);
+            serialPrintf(serialPort, "%c\n", command);
         };
 
         void QueueChar(char value)
