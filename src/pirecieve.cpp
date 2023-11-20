@@ -15,7 +15,7 @@ int main() {
         std::cerr << "Failed to open serial port." << std::endl;
         return 1;
     }
-    std::cout << 'MADE IT HERE' << std::endl;
+    std::cout << "MADE IT HERE" << std::endl;
     while (true) {
         while (serialDataAvail(serialPort) > 0) {
             char receivedChar = serialGetchar(serialPort);
