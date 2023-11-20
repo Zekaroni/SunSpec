@@ -71,56 +71,56 @@ namespace UTILS
         LogCall(std::to_string(seconds));
         std::this_thread::sleep_for(std::chrono::seconds(seconds));
     };
+};
 
-    class SerialCommunication
-    {
-        public:
-            int serialPort = serialOpen(device, 9600);
-            const char* device = "/dev/serial0";
+class SerialCommunication
+{
+    public:
+        int serialPort = serialOpen(device, 9600);
+        const char* device = "/dev/serial0";
 
-            void QueueCommand(char command)
-            {
-                LogCall(std::to_string(command));
-                serialPrintf(serialPort, "%c", command);
-            };
-
-            void QueueChar(char value)
-            {
-                LogCall(std::to_string(value));
-                serialPrintf(serialPort, "%c", value);
-            };
-            
-            void QueueData16(uint16_t data)
-            {
-                LogCall(std::to_string(data));
-                serialPrintf(serialPort, "%u", data);
-            };
-
-            void QueueData32(uint16_t data)
-            {
-                LogCall(std::to_string(data));
-                serialPrintf(serialPort, "%u", data);
-            };
-
-            void SendData()
-            {
-                // NOTE: The data must be queued first before sending a CR
-                serialPrintf(serialPort, "%s", ResponseCodes::CR);
-            };
-
-            void Close()
-            {
-                serialClose(serialPort);
-            };        
-
-        SerialCommunication()
+        void QueueCommand(char command)
         {
-            if (wiringPiSetup() == -1) {
-                LogError("Failed to initialize WiringPi.")
-            };
-            if (serialPort == -1) {
-                LogError("Failed to open serial port.") 
-            };
+            LogCall(std::to_string(command));
+            serialPrintf(serialPort, "%c", command);
+        };
+
+        void QueueChar(char value)
+        {
+            LogCall(std::to_string(value));
+            serialPrintf(serialPort, "%c", value);
+        };
+        
+        void QueueData16(uint16_t data)
+        {
+            LogCall(std::to_string(data));
+            serialPrintf(serialPort, "%u", data);
+        };
+
+        void QueueData32(uint16_t data)
+        {
+            LogCall(std::to_string(data));
+            serialPrintf(serialPort, "%u", data);
+        };
+
+        void SendData()
+        {
+            // NOTE: The data must be queued first before sending a CR
+            serialPrintf(serialPort, "%s", ResponseCodes::CR);
+        };
+
+        void Close()
+        {
+            serialClose(serialPort);
+        };        
+
+    SerialCommunication()
+    {
+        if (wiringPiSetup() == -1) {
+            LogError("Failed to initialize WiringPi.")
+        };
+        if (serialPort == -1) {
+            LogError("Failed to open serial port.") 
         };
     };
 };

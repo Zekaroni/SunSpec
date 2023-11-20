@@ -3,51 +3,51 @@
 #include "../include/logging.h"
 #include "../include/sysutils.h"
 
-UTILS::SerialCommunication SerialCommunication;
+SerialCommunication serialCommunicator;
 
 void SendData16(char command, uint16_t data)
 {
     LogCall(std::to_string(command) + ", " + std::to_string(data));
-    SerialCommunication.QueueCommand(command);
-    SerialCommunication.QueueData16(data);
-    SerialCommunication.SendData();
+    serialCommunicator.QueueCommand(command);
+    serialCommunicator.QueueData16(data);
+    serialCommunicator.SendData();
 };
 
 void SendData32(char command, uint32_t data)
 {
     LogCall(std::to_string(command) + ", " + std::to_string(data));
-    SerialCommunication.QueueCommand(command);
-    SerialCommunication.QueueData32(data);
-    SerialCommunication.SendData();
+    serialCommunicator.QueueCommand(command);
+    serialCommunicator.QueueData32(data);
+    serialCommunicator.SendData();
 };
 
 void SendVariableRequest(char data)
 {
     LogCall(std::to_string(data));
-    SerialCommunication.QueueCommand(RS232::QUERY_PARAM_VALUES);
-    SerialCommunication.QueueChar(data);
+    serialCommunicator.QueueCommand(RS232::QUERY_PARAM_VALUES);
+    serialCommunicator.QueueChar(data);
 };
 
 void SendDataStandalone16(uint16_t data)
 {
     LogCall(std::to_string(data));
-    SerialCommunication.QueueData16(data);
-    SerialCommunication.SendData();
+    serialCommunicator.QueueData16(data);
+    serialCommunicator.SendData();
 };
 
 void SendRegisterUpdate(uint16_t address, uint16_t value)
 {
     LogCall(std::to_string(address) + ", " + std::to_string(value));
-    SerialCommunication.QueueData16(address);
-    SerialCommunication.QueueData16(value);
-    SerialCommunication.SendData();
+    serialCommunicator.QueueData16(address);
+    serialCommunicator.QueueData16(value);
+    serialCommunicator.SendData();
 };
 
 void SendDataModeUpdate(char command, char followChar)
 {
     LogCall(std::to_string(command) + ", " + std::to_string(followChar));
-    SerialCommunication.QueueCommand(RS232::QUERY_PARAM_VALUES);
-    SerialCommunication.QueueChar(followChar);
+    serialCommunicator.QueueCommand(RS232::QUERY_PARAM_VALUES);
+    serialCommunicator.QueueChar(followChar);
 };
 
 void RS232Commands::AddScans(uint16_t scans)
