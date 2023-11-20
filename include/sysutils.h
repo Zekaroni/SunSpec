@@ -83,8 +83,20 @@ namespace UTILS
                 LogCall(std::to_string(command));
                 serialPrintf(serialPort, "%c", command);
             };
+
+            void QueueChar(char value)
+            {
+                LogCall(std::to_string(value));
+                serialPrintf(serialPort, "%c", value);
+            };
             
-            void QueueData(uint16_t data)
+            void QueueData16(uint16_t data)
+            {
+                LogCall(std::to_string(data));
+                serialPrintf(serialPort, "%u", data);
+            };
+
+            void QueueData32(uint16_t data)
             {
                 LogCall(std::to_string(data));
                 serialPrintf(serialPort, "%u", data);

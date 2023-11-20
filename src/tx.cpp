@@ -1,35 +1,53 @@
 #include <iostream>
 #include "../include/RS232Commands.h"
 #include "../include/logging.h"
+#include "../include/sysutils.h"
+
+UTILS::SerialCommunication SerialCommunication;
 
 void SendData16(char command, uint16_t data)
 {
-    std::cout << command << data << std::endl;
+    LogCall(std::to_string(command) + ", " + std::to_string(data));
+    SerialCommunication.QueueCommand(command);
+    SerialCommunication.QueueData16(data);
+    SerialCommunication.SendData();
 };
 
 void SendData32(char command, uint32_t data)
 {
-    std::cout << command << data << std::endl;
+    LogCall(std::to_string(command) + ", " + std::to_string(data));
+    SerialCommunication.QueueCommand(command);
+    SerialCommunication.QueueData32(data);
+    SerialCommunication.SendData();
 };
 
-void SendVariableRequest(uint8_t data)
+void SendVariableRequest(char data)
 {
-    std::cout << RS232::QUERY_PARAM_VALUES << data << std::endl;
+    LogCall(std::to_string(data));
+    SerialCommunication.QueueCommand(RS232::QUERY_PARAM_VALUES);
+    SerialCommunication.QueueChar(data);
 };
 
 void SendDataStandalone16(uint16_t data)
 {
-    std::cout << data << std::endl;
+    LogCall(std::to_string(data));
+    SerialCommunication.QueueData16(data);
+    SerialCommunication.SendData();
 };
 
 void SendRegisterUpdate(uint16_t address, uint16_t value)
 {
-    std::cout << RS232::SET_REGISTER_VALUE << address << value << std::endl;
+    LogCall(std::to_string(address) + ", " + std::to_string(value));
+    SerialCommunication.QueueData16(address);
+    SerialCommunication.QueueData16(value);
+    SerialCommunication.SendData();
 };
 
 void SendDataModeUpdate(char command, char followChar)
 {
-    std::cout << command << followChar << std::endl;
+    LogCall(std::to_string(command) + ", " + std::to_string(followChar));
+    SerialCommunication.QueueCommand(RS232::QUERY_PARAM_VALUES);
+    SerialCommunication.QueueChar(followChar);
 };
 
 void RS232Commands::AddScans(uint16_t scans)
