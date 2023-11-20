@@ -77,6 +77,12 @@ namespace UTILS
         public:
             int serialPort = serialOpen(device, 9600);
             const char* device = "/dev/serial0";
+
+            void QueueCommand(char command)
+            {
+                LogCall(std::to_string(command));
+                serialPrintf(serialPort, "%c", command);
+            };
             
             void QueueData(uint16_t data)
             {

@@ -245,7 +245,7 @@ void RS232Commands::GetVariableInformation(char command)
 
 int main()
 {
-    if (!ERROR_LOG.is_open())
+    if (!LOGGING::ERROR_LOG.is_open())
     {
         std::cerr << "Error opening log file!" << std::endl;
     };
