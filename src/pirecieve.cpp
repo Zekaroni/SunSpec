@@ -15,11 +15,12 @@ int main() {
         std::cerr << "Failed to open serial port." << std::endl;
         return 1;
     }
-
+    std::cout << 'MADE IT HERE' << std::endl;
     while (true) {
         while (serialDataAvail(serialPort) > 0) {
             char receivedChar = serialGetchar(serialPort);
             std::cout << receivedChar;
+            std::cout << "SHOULD BE SOMETHING" << std::endl;
         }
         delay(100);
     }
