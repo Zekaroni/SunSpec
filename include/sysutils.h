@@ -107,7 +107,8 @@ class SerialCommunication
         void SendData()
         {
             // NOTE: The data must be queued first before sending a CR
-            serialPrintf(serialPort, "%s", ResponseCodes::CR);
+            LogCall("Data Sent");
+            serialPrintf(serialPort, "%c", ResponseCodes::CR);
         };
 
         void Close()
