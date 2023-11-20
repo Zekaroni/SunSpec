@@ -22,6 +22,7 @@ int main() {
             std::cout << receivedChar;
             std::cout << "SHOULD BE SOMETHING" << std::endl;
         }
+        std::cout << "LOOP" << std::endl;
         delay(100);
     }
 
