@@ -1,0 +1,1 @@
+g++ -o send ./src/tx.cpp -lwiringPi
