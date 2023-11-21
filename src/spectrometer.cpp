@@ -26,6 +26,7 @@ void SendVariableRequest(char data)
     LogCall(std::to_string(data));
     serialCommunicator.QueueCommand(RS232::QUERY_PARAM_VALUES);
     serialCommunicator.QueueChar(data);
+    serialCommunicator.SendData();
 };
 
 void SendDataStandalone16(uint16_t data)
@@ -46,8 +47,9 @@ void SendRegisterUpdate(uint16_t address, uint16_t value)
 void SendDataModeUpdate(char command, char followChar)
 {
     LogCall(std::to_string(command) + ", " + std::to_string(followChar));
-    serialCommunicator.QueueCommand(RS232::QUERY_PARAM_VALUES);
+    serialCommunicator.QueueCommand(command);
     serialCommunicator.QueueChar(followChar);
+    serialCommunicator.SendData();
 };
 
 void RS232Commands::AddScans(uint16_t scans)
@@ -276,10 +278,10 @@ int main()
     spectrometer.SetLampState(false);
     spectrometer.SetBaudRate(BaudRates::BAUD_115200);
     spectrometer.ClearMemory();
-    std::cout << ResponseCodes::ACK << std::endl;
+    // std::cout << ResponseCodes::ACK << std::endl;
     spectrometer.SetDataStorageMode(1);
     spectrometer.SetPixelMode(3,53,22,84);
-    spectrometer.SetBaudRate(BaudRates::BAUD_115200);
+    spectrometer.SetBaudRate(BaudRates::BAUD_9600);
     spectrometer.SetRegisterValue(0xFE, 0x00);
     spectrometer.SetTriggerMode(2);
     spectrometer.SetASCIIMode();

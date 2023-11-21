@@ -79,6 +79,9 @@ class SerialCommunication
         const char* device = "/dev/serial0";
         int serialPort = serialOpen(device, 9600);
 
+        // NOTE: Queue commands actually send the data, but the
+        // spectrometer only acknowledges it when a CR is sent
+
         void QueueCommand(char command)
         {
             LogCall(std::to_string(command));
