@@ -5,6 +5,12 @@ void setup() {
 void loop() {
   if (Serial.available() > 0) {
     char incomingByte = Serial.read();
-    Serial.print(incomingByte);
+    if (incomingByte == 0x0D)
+    {
+     Serial.print("\n"); 
+    } else
+    {
+      Serial.print(incomingByte);
+    };
   }
 }

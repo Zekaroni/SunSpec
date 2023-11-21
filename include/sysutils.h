@@ -92,7 +92,6 @@ class SerialCommunication
         {
             LogCall(std::to_string(value));
             serialPrintf(serialPort, "%c", value);
-            SendData();
         };
         
         void QueueData16(uint16_t data)
