@@ -47,12 +47,24 @@ Root
 |-- exe
 |-- include
 |   |-- RS232Commands.h
+|   |-- logging.h
+|   |-- sysutils.h
 |-- lib
-|   |-- main.cpp
+|   |-- WiringPi
 |-- log
-|   |-- ERRORS.brctc
-|   |-- CALLS.brctc
+|   |-- ERRORS.log
+|   |-- CALLS.log
+|   |-- RECIEVE.log
 |-- src
+|   |-- arduino
+|       |-- main
+            |-- main.ino
+|   |-- pitest
+|       |-- closeserial.cpp
+|       |-- led.cpp
+|       |-- testRX.cpp
+|       |-- testTX.cpp
+|   |-- spectrometer.cpp
 ```
 
 # Contributors
