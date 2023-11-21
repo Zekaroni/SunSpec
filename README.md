@@ -5,7 +5,7 @@ This is the official repository for the BRCTC Space Team's SunSpec project.
 ## Table of Contents
 - [Introduction](#introduction)
 - [Project Structure](#project-structure)
-- [Contributing](#contributing)
+- [Contributors](#contributors)
 - [License](#license)
 
 ## Introduction
