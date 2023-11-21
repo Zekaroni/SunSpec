@@ -44,7 +44,6 @@ Root
 |-- bin
 |-- doc
 |-- etc
-|-- exe
 |-- include
 |   |-- RS232Commands.h
 |   |-- logging.h
