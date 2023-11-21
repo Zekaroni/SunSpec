@@ -1,8 +1,8 @@
 #include <wiringPi.h>
 #include <iostream>
 
-#define LED_PIN_1 15
-#define LED_PIN_2 16
+#define LED_PIN_1 0
+#define LED_PIN_2 1
 
 int main() {
     if (wiringPiSetup() == -1) {
