@@ -1,1 +1,1 @@
-g++ -o tx ./src/testTX.cpp -lwiringPi
+g++ -o tx ./src/pitest/testTX.cpp -lwiringPi

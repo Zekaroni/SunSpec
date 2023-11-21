@@ -1,1 +1,1 @@
-g++ -o close ./src/closeserial.cpp -lwiringPi
+g++ -o close ./src/pitest/closeserial.cpp -lwiringPi
