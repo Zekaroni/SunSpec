@@ -42,7 +42,12 @@ The project aims to minimize atmospheric distortions, capturing clean spectromet
 ```
 Root
 |-- bin
+|   | -- close_build.sh
+|   | -- rx_build.sh
+|   | -- tx_build.sh
+|   | -- wiringPiInstall.sh
 |-- doc
+|   | -- USB2000+DataSheet.pdf
 |-- etc
 |-- include
 |   |-- RS232Commands.h
