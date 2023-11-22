@@ -267,7 +267,7 @@ int main()
 {
     RS232Commands spectrometer;
     UTILS::awaitResponse(spectrometer, &RS232Commands::AddScans, static_cast<uint16_t>(50));
-
+    std::cout << "Finished waiting" << std::endl;
     // if (!LOGGING::ERROR_LOG.is_open())
     // {
     //     std::cerr << "Error opening log file!" << std::endl;
