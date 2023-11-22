@@ -14,6 +14,46 @@ namespace UTILS
     std::ofstream TX_RESPONSE_OUT("./shared/tx", std::ios::out | std::ios::trunc);
     std::ifstream TX_RESPONSE_IN("./shared/tx", std::ios::binary);
 
+     char RX_READ()
+    {
+        char response;
+        RX_RESPONSE_IN.get(response);
+        if (response)
+        {
+            LogCall("Success");
+            return response;
+        } else
+        {
+            LogError("Rx Failed To Be Read");
+        };
+    };
+
+    void RX_WRITE(char value)
+    {
+        LogCall("Success");
+        RX_RESPONSE_OUT << value;
+    };
+
+    char TX_READ()
+    {
+        char response;
+        TX_RESPONSE_IN.get(response);
+        if (response)
+        {
+            LogCall("Success");
+            return response;
+        } else
+        {
+            LogError("Tx Failed To Be Read");
+        };
+    };
+
+    void TX_WRITE(char value)
+    {
+        LogCall("Success");
+        TX_RESPONSE_OUT << value;
+    };
+
     void microSleep(uint16_t microseconds)
     {
         LogCall(std::to_string(microseconds));
