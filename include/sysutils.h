@@ -100,7 +100,7 @@ class SerialCommunication
             serialPrintf(serialPort, "%u", data);
         };
 
-        void QueueData32(uint16_t data)
+        void QueueData32(uint32_t data)
         {
             LogCall(std::to_string(data));
             serialPrintf(serialPort, "%u", data);
