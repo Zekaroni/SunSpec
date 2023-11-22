@@ -21,6 +21,23 @@ namespace LOGGING
         ss << milliseconds;
         return ss.str();
     };
+
+    
+    void runChecks()
+    {
+      if (!ERROR_LOG.is_open())  
+      {
+        throw std::runtime_error("ERROR_LOG failed to open.");
+      }
+      else if (!CALL_LOG.is_open())
+      {
+        throw std::runtime_error("CALL_LOG failed to open.");
+      } 
+      else if (!RESPONSE_LOG.is_open())
+      {
+        throw std::runtime_error("RESPONSE_LOG failed to open.");
+      };
+    };
 };
 
 // NOTE: All log values must be std::string. Use std::to_string() to convert different data types.

@@ -265,13 +265,10 @@ void RS232Commands::GetVariableInformation(char command)
 
 int main()
 {
+    LOGGING::runChecks();
     RS232Commands spectrometer;
     UTILS::awaitResponse(spectrometer, &RS232Commands::AddScans, static_cast<uint16_t>(50));
     std::cout << "Finished waiting" << std::endl;
-    // if (!LOGGING::ERROR_LOG.is_open())
-    // {
-    //     std::cerr << "Error opening log file!" << std::endl;
-    // };
     // spectrometer.AddScans(50);
     // spectrometer.SetPixelBoxcarWidth(13);
     // spectrometer.SetDataCompression(1);
