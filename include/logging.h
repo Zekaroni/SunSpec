@@ -10,7 +10,7 @@ namespace LOGGING
 {
     std::ofstream ERROR_LOG("./log/ERROR.log", std::ios::app);
     std::ofstream CALL_LOG("./log/CALL.log", std::ios::app);
-    std::ofstream RECIEVE_LOG("./log/RECIEVE.log", std::ios::app);
+    std::ofstream RESPONSE_LOG("./log/RESPONSE.log", std::ios::app);
 
     std::string getTimestamp()
     {
@@ -26,4 +26,4 @@ namespace LOGGING
 // NOTE: All log values must be std::string. Use std::to_string() to convert different data types.
 #define LogError(values){LOGGING::ERROR_LOG << LOGGING::getTimestamp() << " | " << __FILE__ << " | " << __func__ << " | " << values << std::endl;}
 #define LogCall(values){LOGGING::CALL_LOG << LOGGING::getTimestamp() << " | " << __FILE__ << " | " << __func__ << " | " << values << std::endl;}
-#define LogRecieve(values){LOGGING::RECIEVE_LOG << LOGGING::getTimestamp() << " | " << values << std::endl;}
+#define LogResponse(values){LOGGING::RESPONSE_LOG << LOGGING::getTimestamp() << " | " << values << std::endl;}
