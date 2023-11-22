@@ -31,6 +31,17 @@ namespace UTILS
         LogCall(std::to_string(seconds));
         std::this_thread::sleep_for(std::chrono::seconds(seconds));
     };
+
+    template<typename ClassType, typename... Args>
+    void awaitResponse(ClassType& obj, void (ClassType::*func)(Args...), Args... args) {
+        (obj.*func)(args...); // Executes function
+        // bool foo = false;
+        for (int i = 0; i < 10; i++)
+        {
+            std::cout << i << std::endl;
+            miliSleep(100);
+        };
+    };
 };
 
 class SerialCommunication
