@@ -263,10 +263,12 @@ void RS232Commands::GetVariableInformation(char command)
     };
 };
 
-template<typename ClassType, typename... Args>
-void callMemberFunction(ClassType& obj, void (ClassType::*func)(Args...), Args... args) {
-    (obj.*func)(args...);
-}
+// template<typename ClassType, typename... Args>
+// void callMemberFunction(ClassType& obj, void (ClassType::*func)(Args...), Args... args) {
+//     (obj.*func)(args...); // Executes function
+//     // Read RX to see if anything has happened yet.
+//     // TODO: This entire thing.
+// }
 
 int main()
 {
@@ -275,21 +277,21 @@ int main()
         std::cerr << "Error opening log file!" << std::endl;
     };
     RS232Commands spectrometer;
-    callMemberFunction(spectrometer, &RS232Commands::AddScans, static_cast<uint16_t>(50));
-    // spectrometer.SetPixelBoxcarWidth(13);
-    // spectrometer.SetDataCompression(1);
-    // spectrometer.IntegrationTime16Bit(32000);
-    // spectrometer.IntegrationTime32Bit(4333291);
-    // spectrometer.SetLampState(false);
-    // spectrometer.SetBaudRate(BaudRates::BAUD_115200);
-    // spectrometer.ClearMemory();
-    // // std::cout << ResponseCodes::ACK << std::endl;
-    // spectrometer.SetDataStorageMode(1);
-    // spectrometer.SetPixelMode(3,53,22,84);
-    // spectrometer.SetBaudRate(BaudRates::BAUD_9600);
-    // spectrometer.SetRegisterValue(0xFE, 0x00);
-    // spectrometer.SetTriggerMode(2);
-    // spectrometer.SetASCIIMode();
-    // spectrometer.SetBINMode();
-    // spectrometer.GetVariableInformation('A');
+    spectrometer.AddScans(50)
+    spectrometer.SetPixelBoxcarWidth(13);
+    spectrometer.SetDataCompression(1);
+    spectrometer.IntegrationTime16Bit(32000);
+    spectrometer.IntegrationTime32Bit(4333291);
+    spectrometer.SetLampState(false);
+    spectrometer.SetBaudRate(BaudRates::BAUD_115200);
+    spectrometer.ClearMemory();
+    // std::cout << ResponseCodes::ACK << std::endl;
+    spectrometer.SetDataStorageMode(1);
+    spectrometer.SetPixelMode(3,53,22,84);
+    spectrometer.SetBaudRate(BaudRates::BAUD_9600);
+    spectrometer.SetRegisterValue(0xFE, 0x00);
+    spectrometer.SetTriggerMode(2);
+    spectrometer.SetASCIIMode();
+    spectrometer.SetBINMode();
+    spectrometer.GetVariableInformation('A');
 };
