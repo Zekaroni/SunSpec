@@ -277,7 +277,7 @@ int main()
         std::cerr << "Error opening log file!" << std::endl;
     };
     RS232Commands spectrometer;
-    spectrometer.AddScans(50)
+    spectrometer.AddScans(50);
     spectrometer.SetPixelBoxcarWidth(13);
     spectrometer.SetDataCompression(1);
     spectrometer.IntegrationTime16Bit(32000);
