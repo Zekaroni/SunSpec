@@ -14,7 +14,7 @@ namespace UTILS
     std::ofstream TX_RESPONSE_OUT("./shared/tx", std::ios::out | std::ios::trunc);
     std::ifstream TX_RESPONSE_IN("./shared/tx", std::ios::binary);
 
-     char RX_READ()
+    char RX_READ()
     {
         char response;
         RX_RESPONSE_IN.get(response);
@@ -135,11 +135,13 @@ class SerialCommunication
 
     SerialCommunication()
     {
-        if (wiringPiSetup() == -1) {
+        if (wiringPiSetup() == -1)
+        {
             LogError("Failed to initialize WiringPi.")
             throw std::runtime_error("WiringPi initialization failed.");
         };
-        if (serialPort == -1) {
+        if (serialPort == -1)
+        {
             LogError("Failed to open serial port.") 
             throw std::runtime_error("Serial port opening failed.");
         };
