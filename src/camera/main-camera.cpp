@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <raspicam/raspicam.h>
 
 int main(int argc, char **argv) {
@@ -12,13 +13,13 @@ int main(int argc, char **argv) {
     // Camera.set(CV_CAP_PROP_FRAME_WIDTH, 640);
     // Camera.set(CV_CAP_PROP_FRAME_HEIGHT, 480);
 
-    uint8_t *data = new uint8_t[Camera.getImageTypeSize()];
+    uint8_t *data = new uint8_t[Camera.getImageTypeSize(raspicam::RASPICAM_FORMAT_IGNORE)];
 
     Camera.grab();
     Camera.retrieve(data, raspicam::RASPICAM_FORMAT_IGNORE);
 
     std::ofstream outFile("example.jpg", std::ios::binary);
-    outFile.write(reinterpret_cast<char*>(data), Camera.getImageTypeSize());
+    outFile.write(reinterpret_cast<char*>(data), Camera.getImageTypeSize(raspicam::RASPICAM_FORMAT_IGNORE));
     outFile.close();
 
     delete[] data;
