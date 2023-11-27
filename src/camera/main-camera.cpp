@@ -1,19 +1,28 @@
-#include <iomanip>
 #include <iostream>
-#include <memory>
-#include <thread>
+#include <raspicam/raspicam.h>
 
-#include <libcamera/libcamera.h>
+int main(int argc, char **argv) {
+    raspicam::RaspiCam Camera;
 
-using namespace libcamera;
-using namespace std::chrono_literals;
+    if (!Camera.open()) {
+        std::cerr << "Error opening the camera" << std::endl;
+        return -1;
+    }
 
-int main()
-{
-    static std::shared_ptr<Camera> camera;
-    std::unique_ptr<CameraManager> cm = std::make_unique<CameraManager>();
-    cm->start();
-    for (auto const &camera : cm->cameras())
-        std::cout << camera->id() << std::endl;
+    // Camera.set(CV_CAP_PROP_FRAME_WIDTH, 640);
+    // Camera.set(CV_CAP_PROP_FRAME_HEIGHT, 480);
+
+    uint8_t *data = new uint8_t[Camera.getImageTypeSize()];
+
+    Camera.grab();
+    Camera.retrieve(data, raspicam::RASPICAM_FORMAT_IGNORE);
+
+    std::ofstream outFile("example.jpg", std::ios::binary);
+    outFile.write(reinterpret_cast<char*>(data), Camera.getImageTypeSize());
+    outFile.close();
+
+    delete[] data;
+    Camera.release();
+
     return 0;
 }
