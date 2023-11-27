@@ -32,6 +32,7 @@ namespace LOGGING
             throw std::runtime_error("WiringPi initialization failed.");
         };
         pinMode(ERROR_PIN, OUTPUT);
+        digitalWrite(LOGGING::ERROR_PIN, LOW);
         if (!ERROR_LOG.is_open())  
         {
         throw std::runtime_error("ERROR_LOG failed to open.");
