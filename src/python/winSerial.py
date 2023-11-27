@@ -5,7 +5,7 @@ def monitor_serial(port, baud_rate):
     try:
         while True:
             line = ser.readline().decode('utf-8').strip()
-            print(f'Received: {line}')
+            print(line, end='')
     except KeyboardInterrupt:
         print("Monitoring stopped by the user.")
     finally:
