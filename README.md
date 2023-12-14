@@ -5,7 +5,7 @@ This is the official repository for the BRCTC Space Team's SunSpec project.
 ## Table of Contents
 - [Introduction](#introduction)
 - [Project Structure](#project-structure)
-- [Contributing](#contributing)
+- [Contributors](#contributors)
 - [License](#license)
 
 ## Introduction
@@ -42,17 +42,33 @@ The project aims to minimize atmospheric distortions, capturing clean spectromet
 ```
 Root
 |-- bin
+|   | -- close_build.sh
+|   | -- rx_build.sh
+|   | -- tx_build.sh
+|   | -- wiringPiInstall.sh
 |-- doc
+|   | -- USB2000+DataSheet.pdf
 |-- etc
-|-- exe
 |-- include
 |   |-- RS232Commands.h
+|   |-- logging.h
+|   |-- sysutils.h
 |-- lib
-|   |-- main.cpp
+|   |-- WiringPi
 |-- log
-|   |-- ERRORS.brctc
-|   |-- CALLS.brctc
+|   |-- ERRORS.log
+|   |-- CALLS.log
+|   |-- RECIEVE.log
 |-- src
+|   |-- arduino
+|       |-- main
+            |-- main.ino
+|   |-- pitest
+|       |-- closeserial.cpp
+|       |-- led.cpp
+|       |-- testRX.cpp
+|       |-- testTX.cpp
+|   |-- spectrometer.cpp
 ```
 
 # Contributors

@@ -1,0 +1,1 @@
+g++ -o close ./src/pitest/closeserial.cpp -lwiringPi
