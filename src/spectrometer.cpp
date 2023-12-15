@@ -269,6 +269,8 @@ int main()
     RS232Commands spectrometer;
     UTILS::awaitResponse(spectrometer, &RS232Commands::AddScans, static_cast<uint16_t>(3990));
     std::cout << "Finished waiting" << std::endl;
+    UTILS::awaitResponse(spectrometer, &RS232Commands::SetPixelBoxcarWidth, static_cast<uint16_t>(3990));
+    std::cout << "Finished waiting" << std::endl;
     // spectrometer.AddScans(50);
     // spectrometer.SetPixelBoxcarWidth(13);
     // spectrometer.SetDataCompression(1);
