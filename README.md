@@ -1,5 +1,5 @@
 # SunSpec
-This is the official repository for the BRCTC Space Team's SunSpec project.
+This is the official repository for the BRCTC Space Team's SunSpec project that will take flight through [NASA's RockSat-X program](https://www.nasa.gov/wallops/stem/rocksatx/) in 2024.
 
 
 ## Table of Contents
