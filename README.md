@@ -47,8 +47,8 @@ Root
 |   | -- tx_build.sh
 |   | -- wiringPiInstall.sh
 |-- doc
+|   | -- PiModel3Pinout.jpg
 |   | -- USB2000+DataSheet.pdf
-|-- etc
 |-- include
 |   |-- RS232Commands.h
 |   |-- logging.h
@@ -60,14 +60,15 @@ Root
 |   |-- CALLS.log
 |   |-- RECIEVE.log
 |-- src
-|   |-- arduino
-|       |-- main
-            |-- main.ino
 |   |-- pitest
 |       |-- closeserial.cpp
 |       |-- led.cpp
 |       |-- testRX.cpp
 |       |-- testTX.cpp
+|   |-- python
+|       |-- convertDataExample.py
+|       |-- imageProcessing.py
+|       |-- winSerial.py
 |   |-- spectrometer.cpp
 ```
 
