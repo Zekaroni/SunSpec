@@ -9,6 +9,8 @@ fig, ax = plt.subplots()
 
 wavelengths = spec.wavelengths()[48:]
 intensities = spec.intensities()[48:]
+wavelengths = np.delete(wavelengths, [1178])
+intensities = np.delete(intensities, [1178])
 max_index = np.argmax(intensities)
 peak_wavelength = wavelengths[max_index]
 peak_intensity = intensities[max_index]
