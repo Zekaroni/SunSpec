@@ -60,7 +60,7 @@ class ImageHandler:
 
 if __name__ == "__main__":
     import sys
-    if len(sys.argv) > 0:
+    if len(sys.argv) > 1:
         start = time()
         try:
             image = Image.open(sys.argv[1])
