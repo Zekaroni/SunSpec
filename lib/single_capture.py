@@ -9,12 +9,12 @@ fig, ax = plt.subplots()
 
 spec_data = spec.getSpectra()
 
-wavelengths = list(spec_data.keys())[5:]
-intensities = list(spec_data.values())[5:]
+wavelengths = list(spec_data.keys())[16:]
+intensities = list(spec_data.values())[16:]
 
 
-wavelengths = np.delete(wavelengths, [1178])
-intensities = np.delete(intensities, [1178])
+wavelengths = np.delete(wavelengths, [1210])
+intensities = np.delete(intensities, [1210])
 max_index = np.argmax(intensities)
 peak_wavelength = wavelengths[max_index]
 peak_intensity = intensities[max_index]
