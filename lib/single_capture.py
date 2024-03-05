@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 from seabreeze.spectrometers import Spectrometer
 import numpy as np
+from time import time
 
 spec = Spectrometer.from_first_available()
 spec.integration_time_micros(20000)
@@ -26,4 +27,4 @@ ax.annotate(annotation_text,
             xytext=(peak_wavelength + 20, peak_intensity),
             arrowprops=dict(facecolor='black', arrowstyle='->'))
 
-plt.show()
+plt.savefig(f"{time()}.jpg")
