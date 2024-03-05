@@ -1,15 +1,18 @@
 import matplotlib.pyplot as plt
-from seabreeze.spectrometers import Spectrometer
+from spectrometer import USB2000P
 import numpy as np
 from time import time
 
-spec = Spectrometer.from_first_available()
-spec.integration_time_micros(20000)
 
+spec = USB2000P()
 fig, ax = plt.subplots()
 
-wavelengths = spec.wavelengths()[48:]
-intensities = spec.intensities()[48:]
+spec_data = spec.getSpectra()
+
+wavelengths = list(spec_data.keys())
+intensities = list(spec_data.values())
+
+
 wavelengths = np.delete(wavelengths, [1178])
 intensities = np.delete(intensities, [1178])
 max_index = np.argmax(intensities)

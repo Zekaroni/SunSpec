@@ -2,7 +2,7 @@ from seabreeze.spectrometers import Spectrometer
 import numpy as np
 
 class USB2000P:
-    def __init__(self, pixel_offset: int = 48, integration_time: int = 20000) -> None:
+    def __init__(self, pixel_offset: int = 0, integration_time: int = 20000) -> None:
         self.spec = Spectrometer.from_first_available()
         self.pixel_offset = pixel_offset
         self.itegration_time = integration_time
@@ -16,7 +16,5 @@ class USB2000P:
     def getIntensities(self) -> np.ndarray:
         return self.spec.intensities()[self.pixel_offset:]
 
-
-spec = USB2000P()
-
-print(spec.getSpectra().keys())
+if __name__ == "__main__":
+    spec = USB2000P()
