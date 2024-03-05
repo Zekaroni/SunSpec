@@ -9,8 +9,8 @@ fig, ax = plt.subplots()
 
 spec_data = spec.getSpectra()
 
-wavelengths = list(spec_data.keys())
-intensities = list(spec_data.values())
+wavelengths = list(spec_data.keys())[5:]
+intensities = list(spec_data.values())[5:]
 
 
 wavelengths = np.delete(wavelengths, [1178])
