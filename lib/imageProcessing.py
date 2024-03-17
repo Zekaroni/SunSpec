@@ -9,9 +9,11 @@ class ImageHandler:
         Used for processing images of the Sunspec project.
 
         Parameters
-            image: PIL.Image
+            image: PIL.Image.Image
         """
         self.image = image
+        self._heatmap_data = None
+        self._max_heatmap__index = None
     
     def resize(self, size: list[int]) -> None:
         """
@@ -57,27 +59,30 @@ class ImageHandler:
                 averages.append(average)
         return np.array(averages).reshape(height, width)
 
+    def getMaxHeatMapIndex(self, heatmap: np.ndarray) -> list[int, int]:
+        max_index: tuple = np.unravel_index(np.argmax(heatmap), heatmap.shape)
+        return max_index
+
 
 if __name__ == "__main__":
     import sys
-    if len(sys.argv) > 1:
-        start = time()
+    if len(sys.argv) > 0:
+        start: float = time()
         try:
-            image = Image.open(sys.argv[1])
+            image: Image.Image = Image.open(sys.argv[1])
         except Exception:
             raise FileNotFoundError("The argument provided was invalid")
         img = ImageHandler(image)
         img.resize([640,360])
-        img.image.save("new.jpg")
-        heatmap_data = img.getHeatMapArray()
-        max_index = np.unravel_index(np.argmax(heatmap_data), heatmap_data.shape)
+        img.image.save("processed.jpg")
+        heatmap_data: np.ndarray = img.getHeatMapArray()
+        max_index = img.getMaxHeatMapIndex(heatmap_data)
 
         print(f"Took {time() - start} seconds")
-
-        # Uncomment to see heatmap
-        # plt.imshow(heatmap_data, cmap='hot', interpolation='nearest')
-        # plt.colorbar()
-        # plt.text(max_index[1], max_index[0], f"Max", color='black', fontsize=8, ha='center')
-        # plt.show()
+        if "-g" in sys.argv:
+            plt.imshow(heatmap_data, cmap='gray', interpolation='nearest')
+            plt.colorbar()
+            plt.text(max_index[1], max_index[0], f"Max", color='black', fontsize=8, ha='center')
+            plt.show()
     else:
         raise ValueError("No argument provided for file path")
