@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from spectrometer import USB2000P
 import numpy as np
 from time import time
-
+from os import path, makedirs
 
 spec = USB2000P()
 fig, ax = plt.subplots()
@@ -30,4 +30,14 @@ ax.annotate(annotation_text,
             xytext=(peak_wavelength + 20, peak_intensity),
             arrowprops=dict(facecolor='black', arrowstyle='->'))
 
-plt.savefig(f"{time()}.jpg")
+timeframe = time()
+
+if not path.exists("./output"):
+    makedirs("./output")
+
+with open(f"./output/{timeframe}.spec", "wb") as output_file:
+    for wavelength in spec_data.values():
+        output_file.write(np.int16(wavelength))
+
+plt.savefig(f"./output/{timeframe}.jpg")
+plt.show()

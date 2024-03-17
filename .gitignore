@@ -1,3 +1,5 @@
 .vscode
 lib/test.jpg
+lib/output
+lib/__pycache__
 venv
