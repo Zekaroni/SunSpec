@@ -7,5 +7,5 @@ def plot_16bit_values(file_path):
     plt.plot(values)
     plt.show()
 
-file_path = r'.\output\1710642424.3499076.spec'
+file_path = r'.\output\single\1710785453.5301242.spec'
 plot_16bit_values(file_path)

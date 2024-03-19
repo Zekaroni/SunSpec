@@ -32,12 +32,13 @@ ax.annotate(annotation_text,
 
 timeframe = time()
 
-if not path.exists("./output"):
-    makedirs("./output")
+output_path = "./output/single"
+if not path.exists(output_path):
+    makedirs(output_path)
 
-with open(f"./output/{timeframe}.spec", "wb") as output_file:
+with open(f"{output_path}/{timeframe}.spec", "wb") as output_file:
     for wavelength in spec_data.values():
         output_file.write(np.int16(wavelength))
 
-plt.savefig(f"./output/{timeframe}.jpg")
+plt.savefig(f"{output_path}/{timeframe}.jpg")
 plt.show()
