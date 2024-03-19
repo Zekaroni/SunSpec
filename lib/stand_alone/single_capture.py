@@ -35,10 +35,7 @@ timeframe = time()
 output_path = "./output/single"
 if not path.exists(output_path):
     makedirs(output_path)
-
-with open(f"{output_path}/{timeframe}.spec", "wb") as output_file:
-    for wavelength in spec_data.values():
-        output_file.write(np.int16(wavelength))
-
 plt.savefig(f"{output_path}/{timeframe}.jpg")
+output_path += f"/{timeframe}.spec"
+spec.saveIntensities(output_path)
 plt.show()

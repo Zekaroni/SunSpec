@@ -15,6 +15,11 @@ class USB2000P:
     
     def getIntensities(self) -> np.ndarray:
         return self.spec.intensities()[self.pixel_offset:]
+    
+    def saveIntensities(self, output_path: str) -> None:
+        with open(f"{output_path}", "wb") as output_file:
+            for wavelength in self.getIntensities():
+                output_file.write(np.int16(wavelength))
 
 if __name__ == "__main__":
     spec = USB2000P()
