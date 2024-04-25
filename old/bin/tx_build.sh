@@ -1,1 +1,0 @@
-g++ -o tx ./src/pitest/testTX.cpp -lwiringPi

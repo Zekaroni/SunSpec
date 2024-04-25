@@ -1,1 +1,0 @@
-g++ -o rx ./src/pitest/pirecieve.cpp -lwiringPi
