@@ -4,3 +4,5 @@ lib/output
 lib/__pycache__
 output
 venv
+*output
+*.jpg

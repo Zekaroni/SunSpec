@@ -7,6 +7,7 @@ class USB2000P:
         self.pixel_offset = pixel_offset
         self.itegration_time = integration_time
         self.spec.integration_time_micros(self.itegration_time)
+        self.output_path = "./output/path"
 
     def getSpectra(self) -> dict:
         waves = self.spec.wavelengths()[self.pixel_offset:]
