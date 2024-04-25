@@ -74,7 +74,7 @@ if __name__ == "__main__":
             raise FileNotFoundError("The argument provided was invalid")
         img = ImageHandler(image)
         img.resize([640,360])
-        img.image.save("processed.jpg")
+        # img.image.save("processed.jpg")
         heatmap_data: np.ndarray = img.getHeatMapArray()
         max_index = img.getMaxHeatMapIndex(heatmap_data)
 
