@@ -92,7 +92,7 @@ class RS232Commands
         void GetSpectralData();
         void SetTriggerMode(uint16_t value);
         void SetRegisterValue(uint16_t address, uint16_t value); // THE MOTHERLOAD
-        void SetASCIIMode();                                     // Please for the love of god don't use this
+        void SetASCIIMode();                                     // Please for the love of God don't use this
         void SetBINMode();
         void SetChecksumMode(bool state);
         void GetVersionNumber();
